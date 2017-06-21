@@ -19,29 +19,23 @@ variable "ami_id" {
   description = "The ID of the AMI to use when creating the EC2 instance(s)."
 }
 
-variable "remote_state_bucket" {
+variable "vpc_remote_state_bucket" {
   type        = "string"
-  description = "The name of the bucket to use for the S3 backend."
+  description = "The name of the bucket to use for the vpc terraform_remote_state."
 }
 
 variable "vpc_remote_state_key" {
   type        = "string"
-  description = "The name of the key to use for the S3 backend."
+  description = "The name of the key to use for the vpc terraform_remote_state."
 }
 
-variable "remote_state_lock_table" {
+variable "vpc_remote_state_lock_table" {
   type        = "string"
-  description = "The name of the DynamoDB table to use for the S3 backend."
+  description = "The name of the DynamoDB table to use for the vpc terraform_remote_state."
 }
 
-variable "remote_state_region" {
+variable "vpc_remote_state_region" {
   type        = "string"
-  description = "The name of the aws region to use for the S3 backend."
+  description = "The name of the aws region to use for the vpc terraform_remote_state."
   default     = "us-east-1"
-}
-
-variable "vpc_remote_state_encrypt" {
-  type        = "string"
-  description = "Whether the S3 backend should use encryption or not."
-  default     = "true"
 }

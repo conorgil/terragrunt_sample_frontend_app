@@ -1,5 +1,5 @@
 terraform {
-  # This partial configuration will be filled in by Terragrunt during runtime.
+  # Terragrunt will fully configure this backend at run time.
   # See the docs for Terraform Backend Partial Configuration for more details:
   # https://www.terraform.io/docs/backends/config.html#partial-configuration
   backend "s3" {}
@@ -14,14 +14,11 @@ data "terraform_remote_state" "vpc" {
   backend = "s3"
 
   config = {
-    bucket  = "${var.remote_state_bucket}"
-    key     = "${var.vpc_remote_state_key}"
-    region  = "${var.remote_state_region}"
-    encrypt = "${var.vpc_remote_state_encrypt}"
-
-    # Q: Is it possible to use a single lock table for all
-    # Terraform modules in our infrastructure?
-    lock_table = "${var.remote_state_lock_table}"
+    bucket     = "${var.vpc_remote_state_bucket}"
+    key        = "${var.vpc_remote_state_key}"
+    region     = "${var.vpc_remote_state_region}"
+    encrypt    = "${var.vpc_remote_state_encrypt}"
+    lock_table = "${var.vpc_remote_state_lock_table}"
   }
 }
 
