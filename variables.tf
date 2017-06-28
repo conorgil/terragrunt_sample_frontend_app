@@ -39,3 +39,13 @@ variable "vpc_remote_state_region" {
   description = "The name of the aws region to use for the vpc terraform_remote_state."
   default     = "us-east-1"
 }
+
+variable "vpc_remote_state_encrypt" {
+  type = "string"
+
+  # Q: Is this needed when using terraform_remote_state? SSE is already enabled
+  # on the object in the bucket, so I don't think this does anything in this context.
+  description = "Whether the remote state file uses server side encryption or not."
+
+  default = "true"
+}
